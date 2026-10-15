@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>한국어 받아쓰기</title>
+<style>
+body{margin:0;font-family:-apple-system,system-ui,sans-serif;background:#111;color:#eee;display:flex;flex-direction:column;height:100vh}
+#out{flex:1;padding:20px;font-size:28px;line-height:1.5;overflow-y:auto;white-space:pre-wrap}
+#interim{color:#888}
+.bar{display:flex;gap:10px;padding:16px}
+button{flex:1;font-size:20px;padding:18px;border:0;border-radius:14px;color:#fff;background:#2b7cff}
+#mic.on{background:#e53935}
+#clear{background:#444;flex:0 0 30%}
+</style></head><body>
+<div id="out"><span id="final"></span><span id="interim"></span></div>
+<div class="bar"><button id="mic">🎤 시작</button><button id="clear">지우기</button></div>
+<script>
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+const fin=document.getElementById('final'),int=document.getElementById('interim'),mic=document.getElementById('mic');
+if(!SR){fin.textContent='이 브라우저는 음성 인식을 지원하지 않습니다. Chrome 또는 Safari를 사용하세요.';mic.disabled=true}
+let rec,on=false;
+function start(){rec=new SR();rec.lang='ko-KR';rec.continuous=true;rec.interimResults=true;
+rec.onresult=e=>{let t='';for(let i=e.resultIndex;i<e.results.length;i++){const r=e.results[i];if(r.isFinal)fin.textContent+=r[0].transcript+' ';else t+=r[0].transcript}int.textContent=t;
+document.getElementById('out').scrollTop=1e9};
+rec.onend=()=>{if(on)rec.start()};rec.start();}
+mic.onclick=()=>{on=!on;mic.classList.toggle('on',on);mic.textContent=on?'■ 정지':'🎤 시작';if(on)start();else{rec&&rec.stop();int.textContent=''}};
+document.getElementById('clear').onclick=()=>{fin.textContent='';int.textContent=''};
+</script></body></html>
