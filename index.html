@@ -73,10 +73,15 @@
     color: #666;
     text-align: center;
   }
+.vocab{flex:0 0 auto;max-height:34%;overflow-y:auto;border-bottom:1px solid #2a2a32;padding:0 16px 10px}
+.vw{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid #1e1e26;font-size:17px}
+.vw .k{font-weight:600}.vw .r{color:#8b8b9a;font-size:13px}.vw .e{color:#bbb;text-align:right}
+.vw.hit .k{color:#4caf50}
 </style>
 </head>
 <body>
   <div class="panels">
+<section class="vocab" aria-label="Vocabulary"><div class="label" style="padding-left:0">단어 · Vocabulary</div><div id="vlist"></div></section>
     <section class="panel" aria-label="Korean">
       <div class="label">한국어</div>
       <div class="text" id="koOut"><span id="koFinal"></span><span id="koInterim" class="interim"></span></div>
@@ -216,6 +221,16 @@
     clearTimeout(interimTimer);
   };
 })();
+
+(function(){fetch('vocab.json?'+Date.now()).then(r=>r.json()).then(d=>{
+const cur=d.words.filter(w=>w.current).slice(0,10);
+const L=document.getElementById('vlist');
+cur.forEach(w=>{const el=document.createElement('div');el.className='vw';el.dataset.ko=w.ko.replace(/\s/g,'');
+el.innerHTML='<div><div class="k"></div><div class="r"></div></div><div class="e"></div>';
+el.querySelector('.k').textContent=w.ko;el.querySelector('.r').textContent=w.rom;el.querySelector('.e').textContent=w.en;L.appendChild(el)});
+const ko=document.getElementById('koFinal');
+new MutationObserver(()=>{const t=ko.textContent.replace(/\s/g,'');L.querySelectorAll('.vw').forEach(e=>e.classList.toggle('hit',t.includes(e.dataset.ko)))}).observe(ko,{childList:true,characterData:true,subtree:true});
+}).catch(()=>{document.getElementById('vlist').textContent='단어를 불러올 수 없습니다.'})})();
 </script>
 </body>
 </html>
