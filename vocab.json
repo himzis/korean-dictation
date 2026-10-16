@@ -1,6 +1,12 @@
 {
  "words": [
   {
+   "ko": "포장해 주세요",
+   "rom": "po-jang-hae ju-se-yo",
+   "en": "to go, please",
+   "current": true
+  },
+  {
    "ko": "디저트 주세요",
    "rom": "di-jeo-teu ju-se-yo",
    "en": "dessert, please",
@@ -58,7 +64,7 @@
    "ko": "맛있어요",
    "rom": "ma-si-sseo-yo",
    "en": "it's delicious",
-   "current": true
+   "current": false
   },
   {
    "ko": "물 주세요",
