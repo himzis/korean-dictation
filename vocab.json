@@ -19,21 +19,15 @@
    "current": true
   },
   {
-   "ko": "아이스 커피 주세요",
-   "rom": "a-i-seu keo-pi ju-se-yo",
-   "en": "iced coffee, please",
+   "ko": "차 주세요",
+   "rom": "cha ju-se-yo",
+   "en": "tea, please",
    "current": true
   },
   {
-   "ko": "커피 주세요",
-   "rom": "keo-pi ju-se-yo",
-   "en": "coffee, please",
-   "current": true
-  },
-  {
-   "ko": "토마토",
-   "rom": "to-ma-to",
-   "en": "tomato",
+   "ko": "치즈",
+   "rom": "chi-jeu",
+   "en": "cheese",
    "current": true
   },
   {
@@ -59,6 +53,24 @@
    "rom": "me-nyu ju-se-yo",
    "en": "menu, please",
    "current": true
+  },
+  {
+   "ko": "아이스 커피 주세요",
+   "rom": "a-i-seu keo-pi ju-se-yo",
+   "en": "iced coffee, please",
+   "current": false
+  },
+  {
+   "ko": "커피 주세요",
+   "rom": "keo-pi ju-se-yo",
+   "en": "coffee, please",
+   "current": false
+  },
+  {
+   "ko": "토마토",
+   "rom": "to-ma-to",
+   "en": "tomato",
+   "current": false
   },
   {
    "ko": "여기요",
