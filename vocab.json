@@ -1,6 +1,12 @@
 {
  "words": [
   {
+   "ko": "봉투 주세요",
+   "rom": "bong-tu ju-se-yo",
+   "en": "a bag, please",
+   "current": true
+  },
+  {
    "ko": "포장해 주세요",
    "rom": "po-jang-hae ju-se-yo",
    "en": "to go, please",
@@ -58,7 +64,7 @@
    "ko": "여기요",
    "rom": "yeo-gi-yo",
    "en": "excuse me (calling a server)",
-   "current": true
+   "current": false
   },
   {
    "ko": "맛있어요",
