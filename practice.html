@@ -51,7 +51,7 @@ function render(){
  $('prog').textContent=mastered+' / '+words.length+' mastered';
  $('dir').textContent=dir==='en'?'Say it in Korean':'Read it aloud';
  $('q').textContent=dir==='en'?cur.en:cur.ko;
- $('ans').textContent=dir==='ko'?cur.rom+' · '+cur.en:'';
+ $('ans').textContent='';
  $('dots').textContent='●'.repeat(streak)+'○'.repeat(NEED-streak);
 }
 function check(t){
@@ -61,7 +61,7 @@ function check(t){
  if(ok){streak++;$('fb').textContent=streak>=NEED?'✅ Mastered!':'✓ 좋아요! '+(NEED-streak)+' more';
   if(streak>=NEED){mastered++;queue.shift();render();$('dots').textContent='●●●';setTimeout(pick,1300);return}
   dir=Math.random()<.5?'en':'ko';
- }else{streak=0;$('fb').textContent='✗ Try again: '+cur.ko+' ('+cur.rom+')';}
+ }else{streak=0;$('fb').textContent=dir==='ko'?'✗ Try again':'✗ Try again: '+cur.ko+' ('+cur.rom+')';}
  render();
 }
 function start(){
