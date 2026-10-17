@@ -22,7 +22,7 @@ button{flex:1;font-size:16px;padding:15px 8px;border:0;border-radius:14px;color:
 #mic{background:#2b7cff;flex:1.4}#mic.on{background:#e53935}
 .done{padding:40px 16px;text-align:center;font-size:24px}
 </style></head><body>
-<div class="top"><span id="prog"></span><span>3 in a row to master</span></div>
+<div class="top"><span id="prog"></span><span>3 correct to master</span></div>
 <div class="prompt">
  <div class="dir" id="dir"></div>
  <div class="q" id="q">…</div>
@@ -41,7 +41,7 @@ button{flex:1;font-size:16px;padding:15px 8px;border:0;border-radius:14px;color:
 const NEED=3;
 const $=id=>document.getElementById(id);
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-let words=[],queue=[],cur=null,streak=0,dir='en',on=false,rec=null,fresh=true,mastered=0;
+let words=[],cur=null,dir='en',on=false,rec=null,fresh=true,mastered=0;
 const TOPIC='wb-kr-ec5fdc28baeee3c6';let buf=[];const sid=Date.now().toString(36);
 function logEv(o){o.t=new Date().toISOString();o.s=sid;buf.push(o);if(buf.length>=15)flush()}
 function flush(){if(!buf.length)return;const b=JSON.stringify(buf);buf=[];
@@ -49,26 +49,35 @@ function flush(){if(!buf.length)return;const b=JSON.stringify(buf);buf=[];
 setInterval(flush,30000);document.addEventListener('visibilitychange',()=>{if(document.hidden)flush()});
 window.addEventListener('pagehide',flush);
 const norm=s=>s.replace(/[\s.,!?~·'"-]/g,'');
-function pick(){
- if(!queue.length){$('q').textContent='🎉';$('dir').textContent='';$('ans').textContent='All '+words.length+' mastered! 다 했어요!';$('dots').textContent='';$('prog').textContent=mastered+' / '+words.length;stop();return}
- cur=queue[0];streak=0;dir=Math.random()<.5?'en':'ko';render();
+function pick(stay){
+ const left=words.filter(w=>w.n<NEED);
+ if(!left.length){cur=null;$('q').textContent='🎉';$('dir').textContent='';$('ans').textContent='All '+words.length+' mastered! 다 했어요!';$('dots').textContent='';$('prog').textContent=mastered+' / '+words.length;stop();return}
+ if(!(stay&&cur&&cur.n<NEED)){
+  let pool=left.length>1?left.filter(w=>w!==cur):left;
+  let tot=pool.reduce((a,w)=>a+(w.bad?3:1),0),r=Math.random()*tot;
+  for(const w of pool){r-=(w.bad?3:1);if(r<=0){cur=w;break}}
+  if(!cur||cur.n>=NEED||!pool.includes(cur))cur=pool[pool.length-1];
+ }
+ dir=Math.random()<.5?'en':'ko';render();
 }
 function render(){
  $('prog').textContent=mastered+' / '+words.length+' mastered';
- $('dir').textContent=dir==='en'?'Say it in Korean':'Read it aloud';
+ $('dir').textContent=(dir==='en'?'Say it in Korean':'Read it aloud')+(cur.bad?' · ⚠︎ tricky':'');
  $('q').textContent=dir==='en'?cur.en:cur.ko;
  $('ans').textContent='';
- $('dots').textContent='●'.repeat(streak)+'○'.repeat(NEED-streak);
+ $('dots').textContent='●'.repeat(cur.n)+'○'.repeat(NEED-cur.n);
 }
 function check(t){
  if(!cur)return;
  const ok=norm(t).includes(norm(cur.ko));
  logEv({ev:'try',ko:cur.ko,dir:dir,heard:t,ok:ok});
  $('heard').className=ok?'ok':'bad';
- if(ok){streak++;$('fb').textContent=streak>=NEED?'✅ Mastered!':'✓ 좋아요! '+(NEED-streak)+' more';
-  if(streak>=NEED){logEv({ev:'mastered',ko:cur.ko});flush();mastered++;queue.shift();render();$('dots').textContent='●●●';setTimeout(pick,1300);return}
-  dir=Math.random()<.5?'en':'ko';
- }else{streak=0;$('fb').textContent=dir==='ko'?'✗ Try again':'✗ Try again: '+cur.ko+' ('+cur.rom+')';}
+ if(ok){cur.n++;
+  if(cur.n>=NEED){logEv({ev:'mastered',ko:cur.ko});flush();mastered++;$('fb').textContent='✅ Mastered!';}
+  else $('fb').textContent='✓ 좋아요! '+(NEED-cur.n)+' more';
+  render();setTimeout(()=>pick(false),1100);return}
+ cur.bad=true;
+ $('fb').textContent=dir==='ko'?'✗ Try again':'✗ Try again: '+cur.ko+' ('+cur.rom+')';
  render();
 }
 function start(){
@@ -86,11 +95,11 @@ function start(){
 function stop(){on=false;$('mic').classList.remove('on');$('mic').textContent='🎤 시작';if(rec)try{rec.stop()}catch(e){}}
 $('mic').onclick=()=>{if(!SR){$('heard').textContent='Speech recognition not supported. Use Chrome or Safari.';return}
  if(on)stop();else{on=true;$('mic').classList.add('on');$('mic').textContent='■ 정지';start()}};
-$('hint').onclick=()=>{if(cur){logEv({ev:'hint',ko:cur.ko});}if(cur)$('ans').textContent=cur.ko+' · '+cur.rom+' · '+cur.en};
+$('hint').onclick=()=>{if(cur){logEv({ev:'hint',ko:cur.ko});}if(cur){cur.bad=true;$('ans').textContent=cur.ko+' · '+cur.rom+' · '+cur.en}};
 $('listen').onclick=()=>{if(!cur||!window.speechSynthesis)return;const was=on;if(was)stop();
  const u=new SpeechSynthesisUtterance(cur.ko);u.lang='ko-KR';u.rate=.85;u.onend=()=>{if(was)$('mic').click()};speechSynthesis.cancel();speechSynthesis.speak(u)};
-$('skip').onclick=()=>{if(cur)logEv({ev:'skip',ko:cur.ko});if(queue.length>1){queue.push(queue.shift())}pick();$('heard').textContent='';$('fb').textContent=''};
-fetch('vocab.json?'+Date.now()).then(r=>r.json()).then(d=>{words=d.words.filter(w=>w.current).slice(0,10);queue=words.slice();pick()})
+$('skip').onclick=()=>{if(cur)logEv({ev:'skip',ko:cur.ko});pick(false);$('heard').textContent='';$('fb').textContent=''};
+fetch('vocab.json?'+Date.now()).then(r=>r.json()).then(d=>{words=d.words.filter(w=>w.current).slice(0,10).map(w=>Object.assign({},w,{n:0,bad:!!w.trouble}));pick(false)})
  .catch(()=>{$('q').textContent='단어를 불러올 수 없습니다.'});
 })();
 </script></body></html>
