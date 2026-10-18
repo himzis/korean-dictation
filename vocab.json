@@ -1,9 +1,9 @@
 {
   "words": [
     {
-      "ko": "봉투 주세요",
-      "rom": "bong-tu ju-se-yo",
-      "en": "a bag, please",
+      "ko": "계산서 주세요",
+      "rom": "gye-san-seo ju-se-yo",
+      "en": "the check, please",
       "current": true,
       "trouble": true
     },
@@ -15,53 +15,67 @@
       "trouble": true
     },
     {
-      "ko": "디저트 주세요",
-      "rom": "di-jeo-teu ju-se-yo",
-      "en": "dessert, please",
-      "current": true,
-      "trouble": true
-    },
-    {
       "ko": "차 주세요",
       "rom": "cha ju-se-yo",
       "en": "tea, please",
-      "current": true
-    },
-    {
-      "ko": "치즈",
-      "rom": "chi-jeu",
-      "en": "cheese",
-      "current": true
+      "current": true,
+      "trouble": true
     },
     {
       "ko": "녹차 주세요",
       "rom": "nok-cha ju-se-yo",
       "en": "green tea, please",
+      "current": true,
+      "trouble": true
+    },
+    {
+      "ko": "봉투 주세요",
+      "rom": "bong-tu ju-se-yo",
+      "en": "a bag, please",
+      "current": true,
+      "trouble": true
+    },
+    {
+      "ko": "떡볶이 주세요",
+      "rom": "tteok-bo-kki ju-se-yo",
+      "en": "tteokbokki (spicy rice cakes), please",
       "current": true
     },
     {
-      "ko": "계산서 주세요",
-      "rom": "gye-san-seo ju-se-yo",
-      "en": "the check, please",
+      "ko": "떡",
+      "rom": "tteok",
+      "en": "rice cake",
       "current": true
+    },
+    {
+      "ko": "디저트 주세요",
+      "rom": "di-jeo-teu ju-se-yo",
+      "en": "dessert, please",
+      "current": false
+    },
+    {
+      "ko": "치즈",
+      "rom": "chi-jeu",
+      "en": "cheese",
+      "current": false
     },
     {
       "ko": "이거 주세요",
       "rom": "i-geo ju-se-yo",
       "en": "this one, please",
-      "current": true
+      "current": false
     },
     {
       "ko": "하나 주세요",
       "rom": "ha-na ju-se-yo",
       "en": "one, please",
-      "current": true
+      "current": false
     },
     {
       "ko": "메뉴 주세요",
       "rom": "me-nyu ju-se-yo",
       "en": "menu, please",
-      "current": true
+      "current": false
     },
     {
       "ko": "아이스 커피 주세요",
