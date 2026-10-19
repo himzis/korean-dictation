@@ -39,7 +39,7 @@ button{flex:1;font-size:16px;padding:15px 8px;border:0;border-radius:14px;color:
 </div>
 <script>
 (function(){
-const NEED=3;
+const NEED=3,MINCONF=0.8;
 const $=id=>document.getElementById(id);
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
 let words=[],cur=null,dir='en',on=false,rec=null,fresh=true,mastered=0;
@@ -68,26 +68,28 @@ function render(){
  $('ans').textContent='';
  $('dots').textContent='●'.repeat(cur.n)+'○'.repeat(NEED-cur.n);
 }
-function check(t){
+function check(t,conf){
  if(!cur)return;
- const ok=norm(t).includes(norm(cur.ko));
- logEv({ev:'try',ko:cur.ko,dir:dir,heard:t,ok:ok});
+ const exact=norm(t)===norm(cur.ko);
+ const clear=!(conf>0&&conf<MINCONF);
+ const ok=exact&&clear;
+ logEv({ev:'try',ko:cur.ko,dir:dir,heard:t,ok:ok,conf:conf||null});
  $('heard').className=ok?'ok':'bad';
  if(ok){cur.n++;
   if(cur.n>=NEED){logEv({ev:'mastered',ko:cur.ko});flush();mastered++;$('fb').textContent='✅ Mastered!';}
-  else $('fb').textContent='✓ 좋아요! '+(NEED-cur.n)+' more';
+  else $('fb').textContent='✓ 좋아요! '+(NEED-cur.n)+' more'+(conf>0?' · clarity '+Math.round(conf*100)+'%':'');
   render();setTimeout(()=>pick(false),1100);return}
  cur.bad=true;
- $('fb').textContent=dir==='ko'?'✗ Try again':'✗ Try again: '+cur.ko+' ('+cur.rom+')';
+ $('fb').textContent=(exact&&!clear?'✗ Close, but not clear enough ('+Math.round(conf*100)+'%). ':'✗ ')+(dir==='ko'?'Try again':'Try again: '+cur.ko+' ('+cur.rom+')');
  render();
 }
 function start(){
  rec=new SR();rec.lang='ko-KR';rec.continuous=false;rec.interimResults=true;fresh=true;
  rec.onresult=e=>{
   if(fresh){$('heard').textContent='';$('heard').className='';$('fb').textContent='';fresh=false}
-  let t='',fin=false;for(let i=0;i<e.results.length;i++){t+=e.results[i][0].transcript;if(e.results[i].isFinal)fin=true}
+  let t='',fin=false,cf=[];for(let i=0;i<e.results.length;i++){t+=e.results[i][0].transcript;if(e.results[i].isFinal){fin=true;cf.push(e.results[i][0].confidence||0)}}
   $('heard').textContent=t;
-  if(fin)check(t);
+  if(fin)check(t,cf.length?Math.min(...cf):0);
  };
  rec.onerror=()=>{};
  rec.onend=()=>{if(on)setTimeout(()=>{if(on)try{start()}catch(e){}},150)};
