@@ -1,16 +1,27 @@
 {
   "words": [
     {
+      "ko": "빵 주세요",
+      "rom": "ppang ju-se-yo",
+      "en": "bread, please",
+      "current": true
+    },
+    {
+      "ko": "짜요",
+      "rom": "jja-yo",
+      "en": "it's salty",
+      "current": true
+    },
+    {
+      "ko": "싸요",
+      "rom": "ssa-yo",
+      "en": "it's cheap",
+      "current": true
+    },
+    {
       "ko": "계산서 주세요",
       "rom": "gye-san-seo ju-se-yo",
       "en": "the check, please",
-      "current": true,
-      "trouble": true
-    },
-    {
-      "ko": "포장해 주세요",
-      "rom": "po-jang-hae ju-se-yo",
-      "en": "to go, please",
       "current": true,
       "trouble": true
     },
@@ -29,29 +40,35 @@
       "trouble": true
     },
     {
+      "ko": "포크 주세요",
+      "rom": "po-keu ju-se-yo",
+      "en": "a fork, please",
+      "current": true,
+      "trouble": true
+    },
+    {
+      "ko": "포장해 주세요",
+      "rom": "po-jang-hae ju-se-yo",
+      "en": "to go, please",
+      "current": false
+    },
+    {
       "ko": "봉투 주세요",
       "rom": "bong-tu ju-se-yo",
       "en": "a bag, please",
-      "current": true,
-      "trouble": true
+      "current": false
     },
     {
       "ko": "떡볶이 주세요",
       "rom": "tteok-bo-kki ju-se-yo",
       "en": "tteokbokki (spicy rice cakes), please",
-      "current": true
+      "current": false
     },
     {
       "ko": "떡",
       "rom": "tteok",
       "en": "rice cake",
-      "current": true
-    },
-    {
-      "ko": "포크 주세요",
-      "rom": "po-keu ju-se-yo",
-      "en": "a fork, please",
-      "current": true
+      "current": false
     },
     {
       "ko": "디저트 주세요",
