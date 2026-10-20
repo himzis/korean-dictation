@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>소리 연습</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,system-ui,sans-serif;background:#0f0f12;color:#eee;display:flex;flex-direction:column;height:100dvh}
+.modes{display:flex;gap:8px;padding:12px 16px}
+.modes button{flex:1;padding:12px;font-size:16px;background:#2a2a32}
+.modes button.sel{background:#2b7cff}
+.prompt{flex:0 0 auto;text-align:center;padding:16px;border-bottom:1px solid #2a2a32}
+.q{font-size:96px;font-weight:700;line-height:1.1}
+.sub{font-size:16px;color:#8b8b9a;min-height:22px;margin-top:4px}
+.heard{flex:1;padding:16px;overflow-y:auto}
+.label{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#8b8b9a;margin-bottom:8px}
+#heard{font-size:clamp(26px,7vw,36px);white-space:pre-wrap}
+#heard.ok{color:#4caf50}#heard.bad{color:#ff7a6b}
+#fb{font-size:16px;color:#aaa;margin-top:8px}
+.bar{display:flex;gap:8px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#16161c;border-top:1px solid #2a2a32}
+button{border:0;border-radius:14px;color:#fff;background:#3a3a46;font-size:16px;padding:15px 8px;flex:1;-webkit-tap-highlight-color:transparent}
+#mic{background:#2b7cff;flex:1.4}#mic.on{background:#e53935}
+</style></head><body>
+<div class="modes"><button id="mLetters" class="sel" type="button">자모 Letters</button><button id="mSyl" type="button">음절 Syllables</button></div>
+<div class="prompt"><div class="q" id="q">…</div><div class="sub" id="sub"></div></div>
+<div class="heard"><div class="label">들린 말 · Heard</div><div id="heard"></div><div id="fb"></div></div>
+<div class="bar">
+ <button id="mic" type="button">🎤 시작</button>
+ <button id="hint" type="button">힌트</button>
+ <button id="listen" type="button">🔊</button>
+ <button id="speed" type="button" style="flex:0 0 18%">1×</button>
+ <button id="next" type="button">다음 ›</button>
+</div>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+const TOPIC='wb-kr-ec5fdc28baeee3c6';let buf=[];const sid='s'+Date.now().toString(36);
+function logEv(o){o.t=new Date().toISOString();o.s=sid;buf.push(o);if(buf.length>=15)flush()}
+function flush(){if(!buf.length)return;const b=JSON.stringify(buf);buf=[];try{fetch('https://ntfy.sh/'+TOPIC,{method:'POST',body:b,keepalive:true}).catch(()=>{})}catch(e){}}
+setInterval(flush,30000);document.addEventListener('visibilitychange',()=>{if(document.hidden)flush()});window.addEventListener('pagehide',flush);
+// Letters: [jamo, name, sound syllable, romanization]
+const CONS=[['ㄱ','기역','가','g/k'],['ㄴ','니은','나','n'],['ㄷ','디귿','다','d/t'],['ㄹ','리을','라','r/l'],['ㅁ','미음','마','m'],['ㅂ','비읍','바','b/p'],['ㅅ','시옷','사','s'],['ㅇ','이응','아','silent / ng'],['ㅈ','지읒','자','j'],['ㅊ','치읓','차','ch'],['ㅋ','키읔','카','k'],['ㅌ','티읕','타','t'],['ㅍ','피읖','파','p'],['ㅎ','히읗','하','h'],
+ ['ㄲ','쌍기역','까','kk'],['ㄸ','쌍디귿','따','tt'],['ㅃ','쌍비읍','빠','pp'],['ㅆ','쌍시옷','싸','ss'],['ㅉ','쌍지읒','짜','jj']];
+const VOW=[['ㅏ','아','아','a'],['ㅑ','야','야','ya'],['ㅓ','어','어','eo'],['ㅕ','여','여','yeo'],['ㅗ','오','오','o'],['ㅛ','요','요','yo'],['ㅜ','우','우','u'],['ㅠ','유','유','yu'],['ㅡ','으','으','eu'],['ㅣ','이','이','i'],
+ ['ㅐ','애','애','ae'],['ㅔ','에','에','e'],['ㅚ','외','외','oe'],['ㅟ','위','위','wi'],['ㅘ','와','와','wa'],['ㅝ','워','워','wo'],['ㅢ','의','의','ui']];
+const LETTERS=CONS.concat(VOW).map(a=>({show:a[0],accept:[a[1],a[2]],say:a[2],hint:a[1]+' · say "'+a[2]+'" · '+a[3],key:a[0]}));
+// Syllables
+const L=['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+const V=['ㅏ','ㅐ','ㅑ','ㅒ','ㅓ','ㅔ','ㅕ','ㅖ','ㅗ','ㅘ','ㅙ','ㅚ','ㅛ','ㅜ','ㅝ','ㅞ','ㅟ','ㅠ','ㅡ','ㅢ','ㅣ'];
+const T=['','ㄱ','ㄲ','ㄳ','ㄴ','ㄵ','ㄶ','ㄷ','ㄹ','ㄺ','ㄻ','ㄼ','ㄽ','ㄾ','ㄿ','ㅀ','ㅁ','ㅂ','ㅄ','ㅅ','ㅆ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+const RL=['g','kk','n','d','tt','r','m','b','pp','s','ss','','j','jj','ch','k','t','p','h'];
+const RV=['a','ae','ya','yae','eo','e','yeo','ye','o','wa','wae','oe','yo','u','wo','we','wi','yu','eu','ui','i'];
+const RT={'':'','ㄱ':'k','ㄴ':'n','ㄷ':'t','ㄹ':'l','ㅁ':'m','ㅂ':'p','ㅇ':'ng'};
+const BASICV=[0,4,8,13,18,20,2,6,12,17,1,5],ENDS=['','','','ㄱ','ㄴ','ㄹ','ㅁ','ㅂ','ㅇ'];
+function makeSyl(){const l=Math.floor(Math.random()*L.length),v=BASICV[Math.floor(Math.random()*BASICV.length)],t=ENDS[Math.floor(Math.random()*ENDS.length)];
+ const ch=String.fromCharCode(0xAC00+(l*21+v)*28+T.indexOf(t));return {show:ch,accept:[ch],say:ch,hint:RL[l]+RV[v]+RT[t],key:ch}}
+let mode='letters',hard={letters:[],syl:[]},cur=null,prev=null,on=false,rec=null,fresh=true;
+const norm=s=>s.replace(/[\s.,!?~·'"-]/g,'');
+function next(){
+ let item;
+ if(mode==='letters'){const pool=LETTERS.filter(x=>x!==prev);const w=pool.map(x=>hard.letters.includes(x.key)?3:1);let r=Math.random()*w.reduce((a,b)=>a+b);item=pool.find((x,i)=>(r-=w[i])<=0)||pool[0]}
+ else{if(hard.syl.length&&Math.random()<.4){const s=hard.syl[Math.floor(Math.random()*hard.syl.length)];item={show:s,accept:[s],say:s,hint:'',key:s}}else item=makeSyl()}
+ cur=prev=item;$('q').textContent=item.show;$('sub').textContent='';$('heard').textContent='';$('heard').className='';$('fb').textContent='';
+}
+function check(t){
+ if(!cur)return;const n=norm(t);const ok=cur.accept.some(a=>n===a||n.includes(a));
+ $('heard').className=ok?'ok':'bad';
+ $('fb').textContent=ok?'✓ Heard it':'Not quite. It heard '+(n||'nothing')+'. Try again or tap 힌트.';
+ logEv({ev:'sound',mode:mode,ko:cur.key,heard:t,ok:ok});
+}
+function start(){rec=new SR();rec.lang='ko-KR';rec.continuous=false;rec.interimResults=true;fresh=true;
+ rec.onresult=e=>{if(fresh){$('heard').textContent='';$('heard').className='';$('fb').textContent='';fresh=false}
+  let t='',fin=false;for(let i=0;i<e.results.length;i++){t+=e.results[i][0].transcript;if(e.results[i].isFinal)fin=true}
+  $('heard').textContent=t;if(fin)check(t)};
+ rec.onerror=()=>{};rec.onend=()=>{fresh=true;if(on)setTimeout(()=>{if(on)try{start()}catch(e){}},150)};try{rec.start()}catch(e){}}
+function stop(){on=false;$('mic').classList.remove('on');$('mic').textContent='🎤 시작';if(rec)try{rec.stop()}catch(e){}}
+$('mic').onclick=()=>{if(!SR){$('heard').textContent='Speech recognition not supported. Use Chrome or Safari.';return}if(on)stop();else{on=true;$('mic').classList.add('on');$('mic').textContent='■ 정지';start()}};
+$('hint').onclick=()=>{if(cur){$('sub').textContent=cur.hint||cur.show;logEv({ev:'hint',mode:mode,ko:cur.key})}};
+const RATES=[['1×',.9],['🐢 0.7×',.6],['🐢 0.5×',.4]];let ri=0;
+$('speed').onclick=()=>{ri=(ri+1)%RATES.length;$('speed').textContent=RATES[ri][0];$('listen').click()};
+$('listen').onclick=()=>{if(!cur||!window.speechSynthesis)return;const was=on;if(was)stop();const u=new SpeechSynthesisUtterance(cur.say);u.lang='ko-KR';u.rate=RATES[ri][1];u.onend=()=>{if(was)$('mic').click()};speechSynthesis.cancel();speechSynthesis.speak(u)};
+$('next').onclick=next;
+function setMode(m){mode=m;$('mLetters').classList.toggle('sel',m==='letters');$('mSyl').classList.toggle('sel',m==='syl');prev=null;next()}
+$('mLetters').onclick=()=>setMode('letters');$('mSyl').onclick=()=>setMode('syl');
+fetch('sounds.json?'+Date.now()).then(r=>r.json()).then(d=>{hard.letters=d.hard_letters||[];hard.syl=d.hard_syllables||[]}).catch(()=>{}).finally(()=>next());
+})();
+</script></body></html>

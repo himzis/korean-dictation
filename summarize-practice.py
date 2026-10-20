@@ -7,7 +7,7 @@ for l in open("practice-log.jsonl"):
   e=json.loads(l)
   if datetime.datetime.fromisoformat(e["t"].replace("Z","+00:00"))<cut: continue
   k=e["ko"]
-  if e["ev"]=="try":
+  if e["ev"] in ("try","sound"):
     S[k]["tries"]+=1;S[k]["ok"]+=e["ok"]
     if not e["ok"]: heard[k].append(e["heard"])
   else: S[k][e["ev"]]+=1
