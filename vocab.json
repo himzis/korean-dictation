@@ -4,7 +4,8 @@
       "ko": "빵 주세요",
       "rom": "ppang ju-se-yo",
       "en": "bread, please",
-      "current": true
+      "current": true,
+      "trouble": true
     },
     {
       "ko": "짜요",
@@ -19,20 +20,6 @@
       "current": true
     },
     {
-      "ko": "계산서 주세요",
-      "rom": "gye-san-seo ju-se-yo",
-      "en": "the check, please",
-      "current": true,
-      "trouble": true
-    },
-    {
-      "ko": "차 주세요",
-      "rom": "cha ju-se-yo",
-      "en": "tea, please",
-      "current": true,
-      "trouble": true
-    },
-    {
       "ko": "녹차 주세요",
       "rom": "nok-cha ju-se-yo",
       "en": "green tea, please",
@@ -44,6 +31,26 @@
       "rom": "po-keu ju-se-yo",
       "en": "a fork, please",
       "current": true,
+      "trouble": true
+    },
+    {
+      "ko": "얼마예요",
+      "rom": "eol-ma-ye-yo",
+      "en": "how much is it?",
+      "current": true
+    },
+    {
+      "ko": "계산서 주세요",
+      "rom": "gye-san-seo ju-se-yo",
+      "en": "the check, please",
+      "current": false,
+      "trouble": true
+    },
+    {
+      "ko": "차 주세요",
+      "rom": "cha ju-se-yo",
+      "en": "tea, please",
+      "current": false,
       "trouble": true
     },
     {
