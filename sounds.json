@@ -1,5 +1,29 @@
 {
  "_note": "Edited by Yoon. hard_letters / hard_syllables come up 3x more often. Run publish-vocab.sh after editing.",
- "hard_letters": [],
- "hard_syllables": []
+ "hard_letters": [
+  "ㅃ",
+  "ㅉ",
+  "ㅆ",
+  "ㅍ",
+  "ㅊ",
+  "ㅓ",
+  "ㅗ",
+  "ㅖ",
+  "ㅡ",
+  "ㄹ"
+ ],
+ "hard_syllables": [
+  "빵",
+  "짜",
+  "싸",
+  "커",
+  "얼",
+  "녹",
+  "차",
+  "포",
+  "크",
+  "스",
+  "계",
+  "산"
+ ]
 }
