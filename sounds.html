@@ -67,15 +67,13 @@ function next(){
 }
 function check(t){
  if(!cur)return;const n=norm(t);const ok=cur.accept.some(a=>n===a||n.includes(a));
- $('heard').className=ok?'ok':'bad';
- $('fb').textContent=ok?'✓ Heard it':'Not quite. It heard '+(n||'nothing')+'. Try again or tap 힌트.';
  logEv({ev:'sound',mode:mode,ko:cur.key,heard:t,ok:ok});
 }
 function start(){rec=new SR();rec.lang='ko-KR';rec.continuous=false;rec.interimResults=true;fresh=true;
  rec.onresult=e=>{if(fresh){$('heard').textContent='';$('heard').className='';$('fb').textContent='';fresh=false}
   let t='',fin=false;for(let i=0;i<e.results.length;i++){t+=e.results[i][0].transcript;if(e.results[i].isFinal)fin=true}
   $('heard').textContent=t;if(fin)check(t)};
- rec.onerror=()=>{};rec.onend=()=>{fresh=true;if(on)setTimeout(()=>{if(on)try{start()}catch(e){}},150)};try{rec.start()}catch(e){}}
+ rec.onerror=()=>{};rec.onend=()=>{fresh=true;if(on)setTimeout(()=>{if(on)try{start()}catch(e){}},0)};try{rec.start()}catch(e){}}
 function stop(){on=false;$('mic').classList.remove('on');$('mic').textContent='🎤 시작';if(rec)try{rec.stop()}catch(e){}}
 $('mic').onclick=()=>{if(!SR){$('heard').textContent='Speech recognition not supported. Use Chrome or Safari.';return}if(on)stop();else{on=true;$('mic').classList.add('on');$('mic').textContent='■ 정지';start()}};
 $('hint').onclick=()=>{if(cur){$('sub').textContent=cur.hint||cur.show;logEv({ev:'hint',mode:mode,ko:cur.key})}};
