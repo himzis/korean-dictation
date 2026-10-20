@@ -1,309 +1,314 @@
 {
-  "words": [
-    {
-      "ko": "빵 주세요",
-      "rom": "ppang ju-se-yo",
-      "en": "bread, please",
-      "current": true,
-      "trouble": true
-    },
-    {
-      "ko": "짜요",
-      "rom": "jja-yo",
-      "en": "it's salty",
-      "current": true
-    },
-    {
-      "ko": "싸요",
-      "rom": "ssa-yo",
-      "en": "it's cheap",
-      "current": true
-    },
-    {
-      "ko": "녹차 주세요",
-      "rom": "nok-cha ju-se-yo",
-      "en": "green tea, please",
-      "current": true,
-      "trouble": true
-    },
-    {
-      "ko": "포크 주세요",
-      "rom": "po-keu ju-se-yo",
-      "en": "a fork, please",
-      "current": true,
-      "trouble": true
-    },
-    {
-      "ko": "얼마예요",
-      "rom": "eol-ma-ye-yo",
-      "en": "how much is it?",
-      "current": true
-    },
-    {
-      "ko": "계산서 주세요",
-      "rom": "gye-san-seo ju-se-yo",
-      "en": "the check, please",
-      "current": false,
-      "trouble": true
-    },
-    {
-      "ko": "차 주세요",
-      "rom": "cha ju-se-yo",
-      "en": "tea, please",
-      "current": false,
-      "trouble": true
-    },
-    {
-      "ko": "포장해 주세요",
-      "rom": "po-jang-hae ju-se-yo",
-      "en": "to go, please",
-      "current": false
-    },
-    {
-      "ko": "봉투 주세요",
-      "rom": "bong-tu ju-se-yo",
-      "en": "a bag, please",
-      "current": false
-    },
-    {
-      "ko": "떡볶이 주세요",
-      "rom": "tteok-bo-kki ju-se-yo",
-      "en": "tteokbokki (spicy rice cakes), please",
-      "current": false
-    },
-    {
-      "ko": "떡",
-      "rom": "tteok",
-      "en": "rice cake",
-      "current": false
-    },
-    {
-      "ko": "디저트 주세요",
-      "rom": "di-jeo-teu ju-se-yo",
-      "en": "dessert, please",
-      "current": false
-    },
-    {
-      "ko": "치즈",
-      "rom": "chi-jeu",
-      "en": "cheese",
-      "current": false
-    },
-    {
-      "ko": "이거 주세요",
-      "rom": "i-geo ju-se-yo",
-      "en": "this one, please",
-      "current": false
-    },
-    {
-      "ko": "하나 주세요",
-      "rom": "ha-na ju-se-yo",
-      "en": "one, please",
-      "current": false
-    },
-    {
-      "ko": "메뉴 주세요",
-      "rom": "me-nyu ju-se-yo",
-      "en": "menu, please",
-      "current": false
-    },
-    {
-      "ko": "아이스 커피 주세요",
-      "rom": "a-i-seu keo-pi ju-se-yo",
-      "en": "iced coffee, please",
-      "current": false
-    },
-    {
-      "ko": "커피 주세요",
-      "rom": "keo-pi ju-se-yo",
-      "en": "coffee, please",
-      "current": false
-    },
-    {
-      "ko": "토마토",
-      "rom": "to-ma-to",
-      "en": "tomato",
-      "current": false
-    },
-    {
-      "ko": "여기요",
-      "rom": "yeo-gi-yo",
-      "en": "excuse me (calling a server)",
-      "current": false
-    },
-    {
-      "ko": "맛있어요",
-      "rom": "ma-si-sseo-yo",
-      "en": "it's delicious",
-      "current": false
-    },
-    {
-      "ko": "물 주세요",
-      "rom": "mul ju-se-yo",
-      "en": "water, please",
-      "current": false
-    },
-    {
-      "ko": "밥 주세요",
-      "rom": "bap ju-se-yo",
-      "en": "rice/a meal, please",
-      "current": false
-    },
-    {
-      "ko": "이거 하나 주세요",
-      "rom": "i-geo ha-na ju-se-yo",
-      "en": "one of these, please",
-      "current": false
-    },
-    {
-      "ko": "맛있게 드세요",
-      "rom": "ma-sit-ge deu-se-yo",
-      "en": "enjoy your meal",
-      "current": false
-    },
-    {
-      "ko": "현금으로 낼게요",
-      "rom": "hyeon-geum-eu-ro nael-ge-yo",
-      "en": "I'll pay cash",
-      "current": false
-    },
-    {
-      "ko": "안녕하세요",
-      "rom": "an-nyeong-ha-se-yo",
-      "en": "hello",
-      "current": false
-    },
-    {
-      "ko": "안녕히 가세요",
-      "rom": "an-nyeong-hi ga-se-yo",
-      "en": "goodbye (to someone leaving)",
-      "current": false
-    },
-    {
-      "ko": "잘했어요",
-      "rom": "jal-hae-sseo-yo",
-      "en": "well done",
-      "current": false
-    },
-    {
-      "ko": "즐거워요",
-      "rom": "jeul-geo-wo-yo",
-      "en": "I'm having fun",
-      "current": false
-    },
-    {
-      "ko": "최고예요",
-      "rom": "choe-go-ye-yo",
-      "en": "you're the best",
-      "current": false
-    },
-    {
-      "ko": "커피",
-      "rom": "keo-pi",
-      "en": "coffee",
-      "current": false
-    },
-    {
-      "ko": "두부",
-      "rom": "du-bu",
-      "en": "tofu",
-      "current": false
-    },
-    {
-      "ko": "우유",
-      "rom": "u-yu",
-      "en": "milk",
-      "current": false
-    },
-    {
-      "ko": "국",
-      "rom": "guk",
-      "en": "soup",
-      "current": false
-    },
-    {
-      "ko": "밥",
-      "rom": "bap",
-      "en": "rice/meal",
-      "current": false
-    },
-    {
-      "ko": "물",
-      "rom": "mul",
-      "en": "water",
-      "current": false
-    },
-    {
-      "ko": "맛",
-      "rom": "mat",
-      "en": "taste",
-      "current": false
-    },
-    {
-      "ko": "옷",
-      "rom": "ot",
-      "en": "clothes",
-      "current": false
-    },
-    {
-      "ko": "집",
-      "rom": "jip",
-      "en": "house",
-      "current": false
-    },
-    {
-      "ko": "현금",
-      "rom": "hyeon-geum",
-      "en": "cash",
-      "current": false
-    },
-    {
-      "ko": "산",
-      "rom": "san",
-      "en": "mountain",
-      "current": false
-    },
-    {
-      "ko": "밤",
-      "rom": "bam",
-      "en": "night",
-      "current": false
-    },
-    {
-      "ko": "방",
-      "rom": "bang",
-      "en": "room",
-      "current": false
-    },
-    {
-      "ko": "강",
-      "rom": "gang",
-      "en": "river",
-      "current": false
-    },
-    {
-      "ko": "사랑",
-      "rom": "sa-rang",
-      "en": "love",
-      "current": false
-    },
-    {
-      "ko": "나무",
-      "rom": "na-mu",
-      "en": "tree",
-      "current": false
-    },
-    {
-      "ko": "누나",
-      "rom": "nu-na",
-      "en": "older sister (male speaker)",
-      "current": false
-    },
-    {
-      "ko": "모두",
-      "rom": "mo-du",
-      "en": "everyone",
-      "current": false
-    }
-  ]
+ "words": [
+  {
+   "ko": "빵 주세요",
+   "rom": "ppang ju-se-yo",
+   "en": "bread, please",
+   "current": true,
+   "trouble": true
+  },
+  {
+   "ko": "커피",
+   "rom": "keo-pi",
+   "en": "coffee",
+   "current": true,
+   "trouble": true
+  },
+  {
+   "ko": "커피 주세요",
+   "rom": "keo-pi ju-se-yo",
+   "en": "coffee, please",
+   "current": true,
+   "trouble": true
+  },
+  {
+   "ko": "아이스 커피 주세요",
+   "rom": "a-i-seu keo-pi ju-se-yo",
+   "en": "iced coffee, please",
+   "current": true,
+   "trouble": true
+  },
+  {
+   "ko": "짜요",
+   "rom": "jja-yo",
+   "en": "it's salty",
+   "current": true,
+   "trouble": true
+  },
+  {
+   "ko": "싸요",
+   "rom": "ssa-yo",
+   "en": "it's cheap",
+   "current": true
+  },
+  {
+   "ko": "얼마예요",
+   "rom": "eol-ma-ye-yo",
+   "en": "how much is it?",
+   "current": true,
+   "trouble": true
+  },
+  {
+   "ko": "녹차 주세요",
+   "rom": "nok-cha ju-se-yo",
+   "en": "green tea, please",
+   "current": true,
+   "trouble": true
+  },
+  {
+   "ko": "포크 주세요",
+   "rom": "po-keu ju-se-yo",
+   "en": "a fork, please",
+   "current": true,
+   "trouble": true
+  },
+  {
+   "ko": "계산서 주세요",
+   "rom": "gye-san-seo ju-se-yo",
+   "en": "the check, please",
+   "current": false,
+   "trouble": true
+  },
+  {
+   "ko": "차 주세요",
+   "rom": "cha ju-se-yo",
+   "en": "tea, please",
+   "current": false,
+   "trouble": true
+  },
+  {
+   "ko": "포장해 주세요",
+   "rom": "po-jang-hae ju-se-yo",
+   "en": "to go, please",
+   "current": false
+  },
+  {
+   "ko": "봉투 주세요",
+   "rom": "bong-tu ju-se-yo",
+   "en": "a bag, please",
+   "current": false
+  },
+  {
+   "ko": "떡볶이 주세요",
+   "rom": "tteok-bo-kki ju-se-yo",
+   "en": "tteokbokki (spicy rice cakes), please",
+   "current": false
+  },
+  {
+   "ko": "떡",
+   "rom": "tteok",
+   "en": "rice cake",
+   "current": false
+  },
+  {
+   "ko": "디저트 주세요",
+   "rom": "di-jeo-teu ju-se-yo",
+   "en": "dessert, please",
+   "current": false
+  },
+  {
+   "ko": "치즈",
+   "rom": "chi-jeu",
+   "en": "cheese",
+   "current": false
+  },
+  {
+   "ko": "이거 주세요",
+   "rom": "i-geo ju-se-yo",
+   "en": "this one, please",
+   "current": false
+  },
+  {
+   "ko": "하나 주세요",
+   "rom": "ha-na ju-se-yo",
+   "en": "one, please",
+   "current": false
+  },
+  {
+   "ko": "메뉴 주세요",
+   "rom": "me-nyu ju-se-yo",
+   "en": "menu, please",
+   "current": false
+  },
+  {
+   "ko": "토마토",
+   "rom": "to-ma-to",
+   "en": "tomato",
+   "current": false
+  },
+  {
+   "ko": "여기요",
+   "rom": "yeo-gi-yo",
+   "en": "excuse me (calling a server)",
+   "current": false
+  },
+  {
+   "ko": "맛있어요",
+   "rom": "ma-si-sseo-yo",
+   "en": "it's delicious",
+   "current": false
+  },
+  {
+   "ko": "물 주세요",
+   "rom": "mul ju-se-yo",
+   "en": "water, please",
+   "current": false
+  },
+  {
+   "ko": "밥 주세요",
+   "rom": "bap ju-se-yo",
+   "en": "rice/a meal, please",
+   "current": false
+  },
+  {
+   "ko": "이거 하나 주세요",
+   "rom": "i-geo ha-na ju-se-yo",
+   "en": "one of these, please",
+   "current": false
+  },
+  {
+   "ko": "맛있게 드세요",
+   "rom": "ma-sit-ge deu-se-yo",
+   "en": "enjoy your meal",
+   "current": false
+  },
+  {
+   "ko": "현금으로 낼게요",
+   "rom": "hyeon-geum-eu-ro nael-ge-yo",
+   "en": "I'll pay cash",
+   "current": false
+  },
+  {
+   "ko": "안녕하세요",
+   "rom": "an-nyeong-ha-se-yo",
+   "en": "hello",
+   "current": false
+  },
+  {
+   "ko": "안녕히 가세요",
+   "rom": "an-nyeong-hi ga-se-yo",
+   "en": "goodbye (to someone leaving)",
+   "current": false
+  },
+  {
+   "ko": "잘했어요",
+   "rom": "jal-hae-sseo-yo",
+   "en": "well done",
+   "current": false
+  },
+  {
+   "ko": "즐거워요",
+   "rom": "jeul-geo-wo-yo",
+   "en": "I'm having fun",
+   "current": false
+  },
+  {
+   "ko": "최고예요",
+   "rom": "choe-go-ye-yo",
+   "en": "you're the best",
+   "current": false
+  },
+  {
+   "ko": "두부",
+   "rom": "du-bu",
+   "en": "tofu",
+   "current": false
+  },
+  {
+   "ko": "우유",
+   "rom": "u-yu",
+   "en": "milk",
+   "current": false
+  },
+  {
+   "ko": "국",
+   "rom": "guk",
+   "en": "soup",
+   "current": false
+  },
+  {
+   "ko": "밥",
+   "rom": "bap",
+   "en": "rice/meal",
+   "current": false
+  },
+  {
+   "ko": "물",
+   "rom": "mul",
+   "en": "water",
+   "current": false
+  },
+  {
+   "ko": "맛",
+   "rom": "mat",
+   "en": "taste",
+   "current": false
+  },
+  {
+   "ko": "옷",
+   "rom": "ot",
+   "en": "clothes",
+   "current": false
+  },
+  {
+   "ko": "집",
+   "rom": "jip",
+   "en": "house",
+   "current": false
+  },
+  {
+   "ko": "현금",
+   "rom": "hyeon-geum",
+   "en": "cash",
+   "current": false
+  },
+  {
+   "ko": "산",
+   "rom": "san",
+   "en": "mountain",
+   "current": false
+  },
+  {
+   "ko": "밤",
+   "rom": "bam",
+   "en": "night",
+   "current": false
+  },
+  {
+   "ko": "방",
+   "rom": "bang",
+   "en": "room",
+   "current": false
+  },
+  {
+   "ko": "강",
+   "rom": "gang",
+   "en": "river",
+   "current": false
+  },
+  {
+   "ko": "사랑",
+   "rom": "sa-rang",
+   "en": "love",
+   "current": false
+  },
+  {
+   "ko": "나무",
+   "rom": "na-mu",
+   "en": "tree",
+   "current": false
+  },
+  {
+   "ko": "누나",
+   "rom": "nu-na",
+   "en": "older sister (male speaker)",
+   "current": false
+  },
+  {
+   "ko": "모두",
+   "rom": "mo-du",
+   "en": "everyone",
+   "current": false
+  }
+ ]
 }
