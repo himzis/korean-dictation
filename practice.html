@@ -35,6 +35,7 @@ button{flex:1;font-size:16px;padding:15px 8px;border:0;border-radius:14px;color:
  <button id="hint" type="button">힌트</button>
  <button id="listen" type="button">🔊</button>
  <button id="speed" type="button" style="flex:0 0 18%">1×</button>
+ <button id="voice" type="button" style="flex:0 0 18%">🗣</button>
  <button id="skip" type="button">다음 ›</button>
 </div>
 <script>
@@ -99,10 +100,16 @@ function stop(){on=false;$('mic').classList.remove('on');$('mic').textContent='�
 $('mic').onclick=()=>{if(!SR){$('heard').textContent='Speech recognition not supported. Use Chrome or Safari.';return}
  if(on)stop();else{on=true;$('mic').classList.add('on');$('mic').textContent='■ 정지';start()}};
 $('hint').onclick=()=>{if(cur){logEv({ev:'hint',ko:cur.ko});}if(cur){cur.bad=true;$('ans').textContent=cur.ko+' · '+cur.rom+' · '+cur.en}};
+let KV=[],vi=0;
+function vScore(v){const n=v.name;let s=0;if(/premium|enhanced|neural|natural|향상|고품질/i.test(n))s+=10;if(/online/i.test(n))s+=6;if(/google/i.test(n))s+=5;if(/siri/i.test(n))s+=4;if(/yuna|sora|yujin|minji|jian|heami/i.test(n))s+=2;if(/compact|eloquence|espeak/i.test(n))s-=8;if(v.lang==='ko-KR')s+=1;return s}
+function loadV(){if(!window.speechSynthesis)return;const all=speechSynthesis.getVoices().filter(v=>/^ko/i.test(v.lang));if(!all.length)return;const cur=KV[vi];KV=all.sort((a,b)=>vScore(b)-vScore(a));vi=Math.max(0,cur?KV.findIndex(v=>v.name===cur.name):0);vLabel()}
+function vLabel(){const b=$('voice');if(b)b.textContent=KV.length?'🗣 '+(vi+1)+'/'+KV.length:'🗣'}
+if(window.speechSynthesis){loadV();speechSynthesis.onvoiceschanged=loadV}
+$('voice').onclick=()=>{if(!KV.length)loadV();if(KV.length){vi=(vi+1)%KV.length;vLabel()}$('listen').click()};
 const RATES=[['1×',.9],['🐢 0.7×',.6],['🐢 0.5×',.4]];let ri=0;
 $('speed').onclick=()=>{ri=(ri+1)%RATES.length;$('speed').textContent=RATES[ri][0];$('listen').click()};
 $('listen').onclick=()=>{if(!cur||!window.speechSynthesis)return;const was=on;if(was)stop();
- const u=new SpeechSynthesisUtterance(cur.ko);u.lang='ko-KR';u.rate=RATES[ri][1];u.onend=()=>{if(was)$('mic').click()};speechSynthesis.cancel();speechSynthesis.speak(u)};
+ const u=new SpeechSynthesisUtterance(cur.ko);u.lang='ko-KR';if(KV[vi])u.voice=KV[vi];u.rate=RATES[ri][1];u.onend=()=>{if(was)$('mic').click()};speechSynthesis.cancel();speechSynthesis.speak(u)};
 $('skip').onclick=()=>{if(cur)logEv({ev:'skip',ko:cur.ko});pick(false);$('heard').textContent='';$('fb').textContent=''};
 fetch('vocab.json?'+Date.now()).then(r=>r.json()).then(d=>{words=d.words.filter(w=>w.current).slice(0,10).map(w=>Object.assign({},w,{n:0,bad:!!w.trouble}));pick(false)})
  .catch(()=>{$('q').textContent='단어를 불러올 수 없습니다.'});
