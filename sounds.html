@@ -22,7 +22,7 @@ body{margin:0;font-family:-apple-system,system-ui,sans-serif;background:#0f0f12;
 button{border:0;border-radius:14px;color:#fff;background:#3a3a46;font-size:16px;padding:15px 8px;flex:1;-webkit-tap-highlight-color:transparent}
 #mic{background:#2b7cff;flex:1.4}#mic.on{background:#e53935}
 </style></head><body>
-<div class="modes"><button id="mLetters" class="sel" type="button">자모 Letters</button><button id="mSyl" type="button">음절 Syllables</button></div>
+
 <div class="prompt"><div class="q" id="q">…</div><div class="rom" id="rom"></div><div class="sub" id="sub"></div></div>
 <div class="heard"><div class="label">들린 말 · Heard</div><div id="heard"></div><div id="fb"></div></div>
 <div class="bar">
@@ -57,7 +57,7 @@ function romOf(ch){const c=ch.charCodeAt(0)-0xAC00;if(c<0||c>11171)return '';con
 const BASICV=[0,4,8,13,18,20,2,6,12,17,1,5],ENDS=['','','','ㄱ','ㄴ','ㄹ','ㅁ','ㅂ','ㅇ'];
 function makeSyl(){const l=Math.floor(Math.random()*L.length),v=BASICV[Math.floor(Math.random()*BASICV.length)],t=ENDS[Math.floor(Math.random()*ENDS.length)];
  const ch=String.fromCharCode(0xAC00+(l*21+v)*28+T.indexOf(t));return {rom:romOf(ch),show:ch,accept:[ch],say:ch,hint:'',key:ch}}
-let mode='letters',hard={letters:[],syl:[]},cur=null,prev=null,on=false,rec=null,fresh=true;
+let mode='syl',hard={letters:[],syl:[]},cur=null,prev=null,on=false,rec=null,fresh=true;
 const norm=s=>s.replace(/[\s.,!?~·'"-]/g,'');
 function next(){
  let item;
@@ -81,8 +81,7 @@ const RATES=[['1×',.9],['🐢 0.7×',.6],['🐢 0.5×',.4]];let ri=0;
 $('speed').onclick=()=>{ri=(ri+1)%RATES.length;$('speed').textContent=RATES[ri][0];$('listen').click()};
 $('listen').onclick=()=>{if(!cur||!window.speechSynthesis)return;const was=on;if(was)stop();const u=new SpeechSynthesisUtterance(cur.say);u.lang='ko-KR';u.rate=RATES[ri][1];u.onend=()=>{if(was)$('mic').click()};speechSynthesis.cancel();speechSynthesis.speak(u)};
 $('next').onclick=next;
-function setMode(m){mode=m;$('mLetters').classList.toggle('sel',m==='letters');$('mSyl').classList.toggle('sel',m==='syl');prev=null;next()}
-$('mLetters').onclick=()=>setMode('letters');$('mSyl').onclick=()=>setMode('syl');
+
 fetch('sounds.json?'+Date.now()).then(r=>r.json()).then(d=>{hard.letters=d.hard_letters||[];hard.syl=d.hard_syllables||[]}).catch(()=>{}).finally(()=>next());
 })();
 </script></body></html>
