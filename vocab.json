@@ -63,6 +63,12 @@
    "trouble": true
   },
   {
+   "ko": "감사합니다",
+   "rom": "gam-sa-ham-ni-da",
+   "en": "thank you",
+   "current": true
+  },
+  {
    "ko": "계산서 주세요",
    "rom": "gye-san-seo ju-se-yo",
    "en": "the check, please",
