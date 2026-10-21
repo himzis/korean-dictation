@@ -8,13 +8,6 @@
    "trouble": true
   },
   {
-   "ko": "커피",
-   "rom": "keo-pi",
-   "en": "coffee",
-   "current": true,
-   "trouble": true
-  },
-  {
    "ko": "커피 주세요",
    "rom": "keo-pi ju-se-yo",
    "en": "coffee, please",
@@ -67,6 +60,20 @@
    "rom": "gam-sa-ham-ni-da",
    "en": "thank you",
    "current": true
+  },
+  {
+   "ko": "이거 얼마예요",
+   "rom": "i-geo eol-ma-ye-yo",
+   "en": "how much is this?",
+   "current": true,
+   "trouble": true
+  },
+  {
+   "ko": "커피",
+   "rom": "keo-pi",
+   "en": "coffee",
+   "current": false,
+   "trouble": true
   },
   {
    "ko": "계산서 주세요",
