@@ -56,17 +56,24 @@
    "trouble": true
   },
   {
-   "ko": "감사합니다",
-   "rom": "gam-sa-ham-ni-da",
-   "en": "thank you",
-   "current": true
-  },
-  {
    "ko": "이거 얼마예요",
    "rom": "i-geo eol-ma-ye-yo",
    "en": "how much is this?",
    "current": true,
    "trouble": true
+  },
+  {
+   "ko": "카드 돼요?",
+   "rom": "ka-deu dwae-yo",
+   "en": "can I pay by card?",
+   "current": true,
+   "trouble": true
+  },
+  {
+   "ko": "감사합니다",
+   "rom": "gam-sa-ham-ni-da",
+   "en": "thank you",
+   "current": false
   },
   {
    "ko": "커피",
