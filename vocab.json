@@ -8,13 +8,6 @@
    "trouble": true
   },
   {
-   "ko": "커피 주세요",
-   "rom": "keo-pi ju-se-yo",
-   "en": "coffee, please",
-   "current": true,
-   "trouble": true
-  },
-  {
    "ko": "아이스 커피 주세요",
    "rom": "a-i-seu keo-pi ju-se-yo",
    "en": "iced coffee, please",
@@ -68,6 +61,18 @@
    "en": "can I pay by card?",
    "current": true,
    "trouble": true
+  },
+  {
+   "ko": "영수증 주세요",
+   "rom": "yeong-su-jeung ju-se-yo",
+   "en": "a receipt, please",
+   "current": true
+  },
+  {
+   "ko": "커피 주세요",
+   "rom": "keo-pi ju-se-yo",
+   "en": "coffee, please",
+   "current": false
   },
   {
    "ko": "감사합니다",
