@@ -35,13 +35,6 @@
    "trouble": true
   },
   {
-   "ko": "녹차 주세요",
-   "rom": "nok-cha ju-se-yo",
-   "en": "green tea, please",
-   "current": true,
-   "trouble": true
-  },
-  {
    "ko": "포크 주세요",
    "rom": "po-keu ju-se-yo",
    "en": "a fork, please",
@@ -67,6 +60,19 @@
    "rom": "yeong-su-jeung ju-se-yo",
    "en": "a receipt, please",
    "current": true
+  },
+  {
+   "ko": "화장실 어디예요?",
+   "rom": "hwa-jang-sil eo-di-ye-yo",
+   "en": "where's the bathroom?",
+   "current": true
+  },
+  {
+   "ko": "녹차 주세요",
+   "rom": "nok-cha ju-se-yo",
+   "en": "green tea, please",
+   "current": false,
+   "trouble": true
   },
   {
    "ko": "커피 주세요",
