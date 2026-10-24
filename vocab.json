@@ -8,13 +8,6 @@
    "trouble": true
   },
   {
-   "ko": "아이스 커피 주세요",
-   "rom": "a-i-seu keo-pi ju-se-yo",
-   "en": "iced coffee, please",
-   "current": true,
-   "trouble": true
-  },
-  {
    "ko": "짜요",
    "rom": "jja-yo",
    "en": "it's salty",
@@ -66,6 +59,19 @@
    "rom": "hwa-jang-sil eo-di-ye-yo",
    "en": "where's the bathroom?",
    "current": true
+  },
+  {
+   "ko": "이거 뭐예요?",
+   "rom": "i-geo mwo-ye-yo",
+   "en": "what is this?",
+   "current": true
+  },
+  {
+   "ko": "아이스 커피 주세요",
+   "rom": "a-i-seu keo-pi ju-se-yo",
+   "en": "iced coffee, please",
+   "current": false,
+   "trouble": true
   },
   {
    "ko": "녹차 주세요",
