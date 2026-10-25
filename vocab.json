@@ -54,16 +54,22 @@
    "current": true
   },
   {
-   "ko": "이거 뭐예요?",
-   "rom": "i-geo mwo-ye-yo",
-   "en": "what is this?",
-   "current": true
-  },
-  {
    "ko": "배불러요",
    "rom": "bae-bul-leo-yo",
    "en": "I'm full",
    "current": true
+  },
+  {
+   "ko": "잘 먹었습니다",
+   "rom": "jal meo-geot-seum-ni-da",
+   "en": "thanks for the meal (I ate well)",
+   "current": true
+  },
+  {
+   "ko": "이거 뭐예요?",
+   "rom": "i-geo mwo-ye-yo",
+   "en": "what is this?",
+   "current": false
   },
   {
    "ko": "이거 얼마예요",
