@@ -36,12 +36,6 @@
    "trouble": true
   },
   {
-   "ko": "영수증 주세요",
-   "rom": "yeong-su-jeung ju-se-yo",
-   "en": "a receipt, please",
-   "current": true
-  },
-  {
    "ko": "화장실 어디예요?",
    "rom": "hwa-jang-sil eo-di-ye-yo",
    "en": "where's the bathroom?",
@@ -64,6 +58,18 @@
    "rom": "ha-na deo ju-se-yo",
    "en": "one more, please",
    "current": true
+  },
+  {
+   "ko": "이거 맛있어요",
+   "rom": "i-geo ma-si-sseo-yo",
+   "en": "this is delicious",
+   "current": true
+  },
+  {
+   "ko": "영수증 주세요",
+   "rom": "yeong-su-jeung ju-se-yo",
+   "en": "a receipt, please",
+   "current": false
   },
   {
    "ko": "싸요",
