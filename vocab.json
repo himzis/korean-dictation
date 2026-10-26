@@ -15,12 +15,6 @@
    "trouble": true
   },
   {
-   "ko": "싸요",
-   "rom": "ssa-yo",
-   "en": "it's cheap",
-   "current": true
-  },
-  {
    "ko": "얼마예요",
    "rom": "eol-ma-ye-yo",
    "en": "how much is it?",
@@ -64,6 +58,18 @@
    "rom": "jal meo-geot-seum-ni-da",
    "en": "thanks for the meal (I ate well)",
    "current": true
+  },
+  {
+   "ko": "하나 더 주세요",
+   "rom": "ha-na deo ju-se-yo",
+   "en": "one more, please",
+   "current": true
+  },
+  {
+   "ko": "싸요",
+   "rom": "ssa-yo",
+   "en": "it's cheap",
+   "current": false
   },
   {
    "ko": "이거 뭐예요?",
