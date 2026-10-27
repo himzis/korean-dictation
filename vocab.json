@@ -36,12 +36,6 @@
    "trouble": true
   },
   {
-   "ko": "화장실 어디예요?",
-   "rom": "hwa-jang-sil eo-di-ye-yo",
-   "en": "where's the bathroom?",
-   "current": true
-  },
-  {
    "ko": "배불러요",
    "rom": "bae-bul-leo-yo",
    "en": "I'm full",
@@ -64,6 +58,18 @@
    "rom": "naep-kin ju-se-yo",
    "en": "napkins, please",
    "current": true
+  },
+  {
+   "ko": "잘 먹겠습니다",
+   "rom": "jal meok-get-seum-ni-da",
+   "en": "I'll eat well (said before a meal)",
+   "current": true
+  },
+  {
+   "ko": "화장실 어디예요?",
+   "rom": "hwa-jang-sil eo-di-ye-yo",
+   "en": "where's the bathroom?",
+   "current": false
   },
   {
    "ko": "하나 더 주세요",
