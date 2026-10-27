@@ -54,16 +54,22 @@
    "current": true
   },
   {
-   "ko": "하나 더 주세요",
-   "rom": "ha-na deo ju-se-yo",
-   "en": "one more, please",
-   "current": true
-  },
-  {
    "ko": "이거 맛있어요",
    "rom": "i-geo ma-si-sseo-yo",
    "en": "this is delicious",
    "current": true
+  },
+  {
+   "ko": "냅킨 주세요",
+   "rom": "naep-kin ju-se-yo",
+   "en": "napkins, please",
+   "current": true
+  },
+  {
+   "ko": "하나 더 주세요",
+   "rom": "ha-na deo ju-se-yo",
+   "en": "one more, please",
+   "current": false
   },
   {
    "ko": "영수증 주세요",
