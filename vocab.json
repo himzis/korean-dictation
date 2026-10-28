@@ -36,12 +36,6 @@
    "trouble": true
   },
   {
-   "ko": "배불러요",
-   "rom": "bae-bul-leo-yo",
-   "en": "I'm full",
-   "current": true
-  },
-  {
    "ko": "잘 먹었습니다",
    "rom": "jal meo-geot-seum-ni-da",
    "en": "thanks for the meal (I ate well)",
@@ -64,6 +58,18 @@
    "rom": "an maep-ge hae ju-se-yo",
    "en": "not spicy, please",
    "current": true
+  },
+  {
+   "ko": "주문할게요",
+   "rom": "ju-mun-hal-ge-yo",
+   "en": "I'd like to order (I'll order)",
+   "current": true
+  },
+  {
+   "ko": "배불러요",
+   "rom": "bae-bul-leo-yo",
+   "en": "I'm full",
+   "current": false
   },
   {
    "ko": "이거 맛있어요",
