@@ -48,12 +48,6 @@
    "current": true
   },
   {
-   "ko": "이거 맛있어요",
-   "rom": "i-geo ma-si-sseo-yo",
-   "en": "this is delicious",
-   "current": true
-  },
-  {
    "ko": "냅킨 주세요",
    "rom": "naep-kin ju-se-yo",
    "en": "napkins, please",
@@ -64,6 +58,18 @@
    "rom": "jal meok-get-seum-ni-da",
    "en": "I'll eat well (said before a meal)",
    "current": true
+  },
+  {
+   "ko": "안 맵게 해 주세요",
+   "rom": "an maep-ge hae ju-se-yo",
+   "en": "not spicy, please",
+   "current": true
+  },
+  {
+   "ko": "이거 맛있어요",
+   "rom": "i-geo ma-si-sseo-yo",
+   "en": "this is delicious",
+   "current": false
   },
   {
    "ko": "화장실 어디예요?",
